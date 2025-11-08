@@ -1,4 +1,4 @@
-# SMART DEALS
+# PREMIERE SHOP
 
 **A Local Online Marketplace for Buying & Selling with Bids**
 
@@ -139,7 +139,7 @@
 
 ## License
 
-MIT © SMART DEALS
+MIT © PREMIERE SHOP
 
 ---
 
@@ -148,4 +148,4 @@ MIT © SMART DEALS
 
 ---
 
-**SMART DEALS** – _Where every deal feels like home._
+**PREMIERE SHOP** – _Where every deal feels like home._
