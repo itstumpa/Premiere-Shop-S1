@@ -9,18 +9,28 @@ const app = express()
 const admin = require("firebase-admin");
 const port = process.env.PORT || 3000
 
-
-var serviceAccount = require("./firebase-adminsdk-fbsvc-469d75a788.json");
+const decoded = Buffer.from(process.env.FIREBASE_SERVICE_KEY, "base64").toString("utf8");
+const serviceAccount = JSON.parse(decoded);
+// var serviceAccount = require("./firebase-adminsdk-fbsvc-469d75a788.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
 });
 
 
-app.use(cors({
-      origin: "http://localhost:5173",
-      credentials: true
-}));
+// app.use(cors({
+//       origin: "http://localhost:5173",
+//       credentials: true
+// }));
+
+app.use(
+  cors({
+    origin: ["http://localhost:5173","https://premiere-shop.netlify.app", "https://smart-deals-346de.web.app"],
+    credentials: true,
+  })
+);
+
+
 
 app.use(express.json());
 
@@ -94,7 +104,7 @@ app.get('/', (req, res) => {
 async function run() {
   try {
     
-    await client.connect();
+//     await client.connect();
 
 const db = client.db('smart_db');
 const productsCollection = db.collection('products');
@@ -279,7 +289,7 @@ app.post('/bids', async (req, res) => {
         })
 
 
-    await client.db("admin").command({ ping: 1 });
+//     await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
   } finally {
     // Ensures that the client will close when you finish/error
